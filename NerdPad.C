@@ -9,6 +9,10 @@
 /*-------------------------------------------------*/
 
 #include <stdio.h>
+#include <conio.h>
+
+int menu();
+void newNote();
 
 int main()
 {
@@ -29,7 +33,6 @@ int menu()
 {
     int opt;
     do{
-        system("@cls||clear");
         printf("\n** NerdPad **\n\n");
         printf("1. New note\n");
         printf("0. Exit\n\n");
@@ -41,22 +44,23 @@ int menu()
 
 void newNote()
 {
+    char ch;
     char filename[127];
     char str[255];
     char output[255];
     int i=0;
     do{
-        system("@cls||clear");
-        printf("\n** NEW NOTE **\n");
+        printf("\n\n** NEW NOTE **\n");
         printf("CTRL + S to save.\n");
         printf("%d characters remaining.\n\n",255-i); //(total of characters) - (characters already written)
         printf("%s",output);
-        str[i]=getch();
-        if(255-i==0) //if were already written 255 characters
+        ch=getch();
+        str[i]=ch;
+        if(255-i==0 && str[i]!=8) //if were already written 256 characters
             continue;
-        if(str[i]==8) //if backspace was pressed
+        if(str[i]==8 && i<255 && i>0) //if backspace was pressed
         {
-            str[i-1]='\0';
+            output[i-1]='\0';
             i--;
             continue;
         }

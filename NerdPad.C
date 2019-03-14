@@ -13,6 +13,7 @@
 
 int menu();
 void newNote();
+void saveFile(char *output,int saved,char *filename);
 
 int main()
 {
@@ -46,15 +47,17 @@ void newNote()
 {
     char ch;
     char filename[127];
-    char output[255];
+    char output[6375];
+    int saved=0;
     int i=0;
     do{
         printf("\n** NEW NOTE **\n");
         printf("CTRL + S to save.\n");
-        printf("%d characters remaining.\n\n",255-i); //(total of characters) - (characters already written)
+        printf("CTRL + E to exit the editor.\n");
+        printf("%d characters remaining.\n\n",6374-i); //(total of characters) - (characters already written)
         printf("%s",output);
         ch=getch();
-        if((255-i==0 && output[i]!=8) || output[i]==127) //if were already written 256 characters or del was pressed
+        if((6375-i==0 && ch!=8) || ch==127) //if were already written 6375 characters or del was pressed
             continue;
         if(ch==8 && i>=0) //if backspace was pressed
         {
@@ -69,15 +72,37 @@ void newNote()
             sprintf(output,"%s\n",output);
         }
         else if(ch==19) //if CTRL+S was pressed
+        {
+            saveFile(output,saved,filename);
+            saved=1;
+        }
+        else if(ch==5) //if CTRL+E was pressed
+        {
+            saveFile(output,saved,filename);
             break;
+        }
         else //else, saves the written character to output string
             sprintf(output,"%s%c",output,ch);
         i++;
     }while(1);
-    printf("\nFilename: ");
-    scanf("%s",filename); //get filename
-    FILE *file; //create a new FILE variable named "file"
-    file = fopen(filename,"w"); //open file for write with the name "filename"
-    fprintf(file,output); //write to file
-    fclose(file); //close file
+}
+
+void saveFile(char *output,int saved,char *filename)
+{
+    if(!saved)
+    {
+        printf("\nFilename: ");
+        scanf("%s",filename); //get filename
+        FILE *file; //create a new FILE variable named "file"
+        file = fopen(filename,"w"); //open file for write with the name "filename"
+        fprintf(file,output); //write to file
+        fclose(file); //close file
+    }
+    else
+    {
+        FILE *file; //create a new FILE variable named "file"
+        file = fopen(filename,"w"); //open file for write with the name "filename"
+        fprintf(file,output); //write to file
+        fclose(file); //close file
+    }
 }

@@ -39,7 +39,7 @@ int menu()
     do{
         system("cls");
         //system("clear");
-        printf("\n** NerdPad **\n\n");
+        printf("\n** NerdPad IDE **\n\n");
         printf("1. New file\n");
         printf("0. Exit\n\n");
         printf("Option: ");
@@ -67,6 +67,8 @@ void newFile()
         ch=getch();
         if((6375-i==0 && ch!=8) || ch==127) //if were already written 6375 characters or del was pressed
             continue;
+        if(ch=='%')
+            sprintf(output,"%s%c",output,ch,ch);
         if(ch==8 && i>=0) //if backspace was pressed
         {
             output[i--]='\0';

@@ -1,19 +1,22 @@
-/*-------------------------------------------------*/
-/*                     NerdPad                     */
-/*-------------------------------------------------*/
-/*  A very simple developed in C language notepad. */
-/*-------------------------------------------------*/
-/*             Developed by carlostojal            */
-/*-------------------------------------------------*/
-/*     https://github.com/carlostojal/NerdPad      */
-/*-------------------------------------------------*/
+/*------------------------------------------------------------*/
+/*                             NerdPad                        */
+/*------------------------------------------------------------*/
+/*  A very simple developed in C language for C language IDE. */
+/*------------------------------------------------------------*/
+/*                     Developed by carlostojal               */
+/*------------------------------------------------------------*/
+/*             https://github.com/carlostojal/NerdPad         */
+/*------------------------------------------------------------*/
 
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
+//#include <linux.h>
 
 int menu();
-void newNote();
+void newFile();
 void saveFile(char *output,int saved,char *filename);
+void compile(char *filename);
 
 int main()
 {
@@ -23,7 +26,7 @@ int main()
         switch(menuOpt)
         {
             case 1:
-                newNote();
+                newFile();
                 break;
         }
     }while(menuOpt!=0);
@@ -34,8 +37,10 @@ int menu()
 {
     int opt;
     do{
+        system("cls");
+        //system("clear");
         printf("\n** NerdPad **\n\n");
-        printf("1. New note\n");
+        printf("1. New file\n");
         printf("0. Exit\n\n");
         printf("Option: ");
         scanf("%d",&opt);
@@ -43,7 +48,7 @@ int menu()
     return opt;
 }
 
-void newNote()
+void newFile()
 {
     char ch;
     char filename[127];
@@ -51,8 +56,11 @@ void newNote()
     int saved=0;
     int i=0;
     do{
-        printf("\n** NEW NOTE **\n");
+        system("cls");
+        //system("clear");
+        printf("\n** NEW FILE **\n");
         printf("CTRL + S to save.\n");
+        printf("F9 to compile.\n");
         printf("CTRL + E to exit the editor.\n");
         printf("%d characters remaining.\n\n",6374-i); //(total of characters) - (characters already written)
         printf("%s",output);
@@ -64,12 +72,15 @@ void newNote()
             output[i--]='\0';
             continue;
         }
-        if(ch==9)
-            printf("    ");
-        if(ch==13) //if enter was pressed
+        else if(ch==13) //if enter was pressed
         {
             printf("\n");
             sprintf(output,"%s\n",output);
+        }
+        else if(ch==67)
+        {
+            saveFile(output,saved,filename);
+            compile(filename);
         }
         else if(ch==19) //if CTRL+S was pressed
         {
@@ -91,11 +102,36 @@ void saveFile(char *output,int saved,char *filename)
 {
     if(!saved)
     {
-        printf("\nFilename: ");
+        printf("\n\nFilename: ");
         scanf("%s",filename); //get filename
     }
     FILE *file; //create a new FILE variable named "file"
     file = fopen(filename,"w"); //open file for write with the name "filename"
     fprintf(file,output); //write to file
     fclose(file); //close file
+}
+
+void compile(char *filename)
+{
+    char cmd[50];
+    char exec[50];
+    int i, foundDot=0;
+    for(i=0;!foundDot;i++)
+    {
+        if(filename[i]=='.')
+        {
+            foundDot=1;
+            exec[i]='\0';
+        }
+        else
+            exec[i]=filename[i];
+    }
+    printf("\nCompiling...\n");
+    sprintf(cmd,"gcc %s -o %s",filename,exec);
+    system(cmd);
+    printf("\nCompile ended.\n\n");
+    printf("--------------------------------\n\n");
+    sprintf(cmd,"%s.exe",exec);
+    system(cmd);
+    getch();
 }

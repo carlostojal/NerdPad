@@ -102,6 +102,7 @@ void saveFile(char *output,int saved,char *filename)
 {
     if(!saved)
     {
+        printf("\n\n--------------------------------");
         printf("\n\nFilename: ");
         scanf("%s",filename); //get filename
     }
@@ -126,6 +127,7 @@ void compile(char *filename)
         else
             exec[i]=filename[i];
     }
+    printf("\n\n--------------------------------\n\n");
     printf("\nCompiling...\n");
     sprintf(cmd,"gcc %s -o %s",filename,exec);
     system(cmd);

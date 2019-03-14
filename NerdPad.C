@@ -93,16 +93,9 @@ void saveFile(char *output,int saved,char *filename)
     {
         printf("\nFilename: ");
         scanf("%s",filename); //get filename
-        FILE *file; //create a new FILE variable named "file"
-        file = fopen(filename,"w"); //open file for write with the name "filename"
-        fprintf(file,output); //write to file
-        fclose(file); //close file
     }
-    else
-    {
-        FILE *file; //create a new FILE variable named "file"
-        file = fopen(filename,"w"); //open file for write with the name "filename"
-        fprintf(file,output); //write to file
-        fclose(file); //close file
-    }
+    FILE *file; //create a new FILE variable named "file"
+    file = fopen(filename,"w"); //open file for write with the name "filename"
+    fprintf(file,output); //write to file
+    fclose(file); //close file
 }

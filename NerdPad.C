@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
 
 int menu();
 void newNote();
@@ -46,42 +47,39 @@ void newNote()
 {
     char ch;
     char filename[127];
-    char str[255];
     char output[255];
     int i=0;
     do{
-        printf("\n\n** NEW NOTE **\n");
+        system("cls");
+        printf("\n** NEW NOTE **\n");
         printf("CTRL + S to save.\n");
         printf("%d characters remaining.\n\n",255-i); //(total of characters) - (characters already written)
         printf("%s",output);
         ch=getch();
-        str[i]=ch;
-        if(255-i==0 && str[i]!=8) //if were already written 256 characters
+        if((255-i==0 && output[i]!=8) || output[i]==127) //if were already written 256 characters or del was pressed
             continue;
-        if(str[i]==8 && i<255 && i>0) //if backspace was pressed
+        if(ch==8 && i>=0) //if backspace was pressed
         {
-            output[i-1]='\0';
-            i--;
+            output[i--]='\0';
             continue;
         }
-        if(str[i]==13) //if enter was pressed
+        if(ch==9)
+            printf("    ");
+        if(ch==13) //if enter was pressed
         {
             printf("\n");
             sprintf(output,"%s\n",output);
         }
-        else if(str[i]==19) //if CTRL+S was pressed
+        else if(ch==19) //if CTRL+S was pressed
             break;
-        else //else, prints the written character and saves it to output string
-        {
-            printf("%c",str[i]);
-            sprintf(output,"%s%c",output,str[i]);
-        }
+        else //else, saves the written character to output string
+            sprintf(output,"%s%c",output,ch);
         i++;
     }while(1);
     printf("\nFilename: ");
     scanf("%s",filename); //get filename
     FILE *file; //create a new FILE variable named "file"
-    file = fopen(filename,"w"); //open file for write
-    fprintf(file,str); //write to file
+    file = fopen(filename,"w"); //open file for write with the name "filename"
+    fprintf(file,output); //write to file
     fclose(file); //close file
 }

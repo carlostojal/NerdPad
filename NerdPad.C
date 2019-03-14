@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <conio.h>
-#include <windows.h>
 
 int menu();
 void newNote();
@@ -50,7 +49,6 @@ void newNote()
     char output[255];
     int i=0;
     do{
-        system("cls");
         printf("\n** NEW NOTE **\n");
         printf("CTRL + S to save.\n");
         printf("%d characters remaining.\n\n",255-i); //(total of characters) - (characters already written)

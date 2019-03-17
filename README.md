@@ -1,7 +1,8 @@
 # NerdPad
 A simple developed in C language for C language IDE. <br>
 Developed by carlostojal.<br><br>
-Warning: you need GCC compiler set as environment variable to use the compiler.<br><br>
+Warning: you need GCC compiler set as environment variable to use the compiler.<br>
+You can find the files in <i>/bin/GCC</i><br><br>
 <b>To do that (Windows):</b><br>
 <ul>
   <li>Open CMD</li>

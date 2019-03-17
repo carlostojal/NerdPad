@@ -5,7 +5,7 @@ Developed by carlostojal.<br><br>
 <b>Directories description:</b>
 <ul>
   <li><b>bin: </b>executable and GCC files.</li>
-  <li><b>imag: </b>images related to NerdPad</li>
+  <li><b>img: </b>images related to NerdPad</li>
   <li><b>src: </b>source code of NerdPad</li>
  </ul>
 Warning: you need GCC compiler set as environment variable to use the compiler.<br>

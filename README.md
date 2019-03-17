@@ -1,7 +1,7 @@
 # NerdPad IDE
 A simple developed in C language for C language IDE. <br>
 Developed by carlostojal.<br><br>
-<img src="https://raw.githubusercontent.com/carlostojal/NerdPad/master/images/interface.PNG" alt="NerdPad Logo" /><br><br>
+<img src="https://raw.githubusercontent.com/carlostojal/NerdPad/master/img/interface.PNG" alt="NerdPad Logo" /><br><br>
 <b>Directories description:</b>
 <ul>
   <li><b>bin: </b>executable and GCC files.</li>

@@ -1,11 +1,11 @@
 /*------------------------------------------------------------*/
-/*                             NerdPad                        */
+/*                           NerdPad                          */
 /*------------------------------------------------------------*/
 /*  A very simple developed in C language for C language IDE. */
 /*------------------------------------------------------------*/
-/*                     Developed by carlostojal               */
+/*         Developed by carlostojal - Copyright 2019          */
 /*------------------------------------------------------------*/
-/*             https://github.com/carlostojal/NerdPad         */
+/*           https://github.com/carlostojal/NerdPad           */
 /*------------------------------------------------------------*/
 
 #include <stdio.h>
@@ -34,6 +34,7 @@ int main()
                 break;
             case 2:
                 openFile();
+                break;
         }
     }while(menuOpt!=0);
     return 0;
@@ -184,7 +185,6 @@ void openFile()
     output = (char*)malloc(lenght);
     fread(output,1,lenght,file);
 
-    //fgets(output,6374,file);
     fclose(file);
 
 

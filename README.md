@@ -4,7 +4,7 @@ Developed by carlostojal.<br><br>
 <img src="https://raw.githubusercontent.com/carlostojal/NerdPad/master/images/interface.PNG" alt="NerdPad Logo" /><br><br>
 Warning: you need GCC compiler set as environment variable to use the compiler.<br>
 You can find the files in <i>/bin/gcc</i><br><br>
-<b>To do that (Windows):</b><br>
+<b>To check and install GCC (Windows):</b><br>
 <ul>
   <li>Open <b>CMD</b></li>
   <li>Type <i>set path</i></li>

@@ -1,6 +1,7 @@
 # NerdPad
 A simple developed in C language for C language IDE. <br>
 Developed by carlostojal.<br><br>
+<img src="https://raw.githubusercontent.com/carlostojal/NerdPad/master/images/interface.PNG" alt="NerdPad Logo" />
 Warning: you need GCC compiler set as environment variable to use the compiler.<br>
 You can find the files in <i>/bin/gcc</i><br><br>
 <b>To do that (Windows):</b><br>

@@ -8,4 +8,4 @@ You can find the files in <i>/bin/GCC</i><br><br>
   <li>Open <b>CMD</b></li>
   <li>Type <i>set path</i></li>
   <li>If path to GCC compiler appears there, all is ok</li>
-  <li>Else, open the control panel and go to <i>System and Security->System->Advanced System Settings->Environment variables->System variables->Path</i> and add the path to the GCC binaries
+  <li>Else, open the Control Panel and go to <i>System and Security->System->Advanced System Settings->Environment variables->System variables->Path</i> and add the path to the GCC binaries

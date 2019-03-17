@@ -2,6 +2,12 @@
 A simple developed in C language for C language IDE. <br>
 Developed by carlostojal.<br><br>
 <img src="https://raw.githubusercontent.com/carlostojal/NerdPad/master/images/interface.PNG" alt="NerdPad Logo" /><br><br>
+<b>Directories description:</b>
+<ul>
+  <li><b>bin: </b>executable and GCC files.</li>
+  <li><b>images: </b>images related to NerdPad</li>
+  <li><b>src: </b>source code of NerdPad</li>
+ </ul>
 Warning: you need GCC compiler set as environment variable to use the compiler.<br>
 You can find the files in <i>/bin/gcc</i><br><br>
 <b>To check and install GCC (Windows):</b><br>
